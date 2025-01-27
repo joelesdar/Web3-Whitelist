@@ -11,7 +11,7 @@ import {
 const Header = () => {
 
   return (
-    <header className="bg-background text-white border-b border-primary">
+    <header className="bg-background text-white border-b border-highlight">
       <nav className="mx-auto flex items-center justify-between p-8">
       <Image
           src="/kiichain.svg"
