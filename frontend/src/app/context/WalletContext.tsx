@@ -16,12 +16,11 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
   const [balance, setBalance] = useState<string | null>(null);
 
-  // Cambiar/agregar la red Kiichain
   const switchToKiichainNetwork = async () => {
     if (typeof window.ethereum !== "undefined") {
       try {
         const kiichainNetwork = {
-          chainId: "0x538", // 1336 en hexadecimal
+          chainId: "0x538", // 1336 hexadecimal
           chainName: "Kiichain Testnet",
           nativeCurrency: {
             name: "KII",
@@ -39,15 +38,14 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
 
         console.log("Red Kiichain agregada/cambiada correctamente.");
       } catch (error) {
-        console.error("Error al cambiar/agregar la red Kiichain:", error);
-        alert("Error al cambiar/agregar la red Kiichain. Por favor, verifica que MetaMask esté instalado.");
+        console.error("Error trying to chain/add the kii network:", error);
+        alert("Error trying to chain/add the kii network. Please check that Metamask is already installed.");
       }
     } else {
-      alert("MetaMask no está instalado");
+      alert("MetaMask is not installed");
     }
   };
 
-  // Verificar si ya está conectado a Kiichain
   const isKiichainNetwork = async (): Promise<boolean> => {
     if (typeof window.ethereum !== "undefined") {
       const chainId = await window.ethereum.request({ method: "eth_chainId" });
@@ -56,7 +54,6 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
     return false;
   };
 
-  // Conectar la billetera
   const connectWallet = async () => {
     if (typeof window.ethereum !== "undefined") {
       try {
@@ -75,19 +72,18 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
 
         console.log("Billetera conectada:", account);
       } catch (error) {
-        console.error("Error al conectar la wallet:", error);
-        alert("Error al conectar la billetera");
+        console.error("Error trying to connect the wallet:", error);
+        alert("Error trying to connect the wallet");
       }
     } else {
-      alert("MetaMask no está instalado");
+      alert("MetaMask is not installed");
     }
   };
 
-  // Desconectar la billetera
   const disconnectWallet = () => {
     setWalletAddress(null);
     setBalance(null);
-    console.log("Billetera desconectada");
+    console.log("Wallet disconnected");
   };
 
   return (
@@ -104,7 +100,6 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// Hook para usar el contexto
 export const useWallet = () => {
   const context = useContext(WalletContext);
   if (!context) {

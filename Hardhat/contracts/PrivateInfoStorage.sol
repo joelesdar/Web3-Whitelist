@@ -33,6 +33,10 @@ contract PrivateInfoStorage {
         emit WalletAdded(_newWallet);
     }
 
+    function getOwner() public view returns (address) {
+        return owner;
+    }
+
     function getWhitelist() public onlyOwner view returns (address[] memory) {
         return whitelist;
     }
