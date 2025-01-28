@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const CONTRACT_ADDRESS = "0x9e94a6E3b2D91e027205179eA2b078556F428582";
+const CONTRACT_ADDRESS = `${process.env.WALLET_CONTRACT_ADDRESS}`;
 const CONTRACT_ABI = PrivateInfoStorage.abi;
 const privateKey = `0x${process.env.NEXT_PUBLIC_WALLET_API_KEY}`;
 
