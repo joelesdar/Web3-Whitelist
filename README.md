@@ -29,7 +29,7 @@
 <h2>🧩Installation</h2>
 <ol>
   <li>Clone this repository into your computer</li>
-  <li>Open the hardhat folder and run `npm install` to install all the dependencies</li>
+  <li>Open the hardhat folder and run `npm install` to install the Hardhat dependencies</li>
   <li>Copy the private key from your Metamask and, base on the structure of the .env.example file, create a .env file and copy the private key</li>
   <li>Run `npx hardhat compile`to compile the smart contract</li>
   <li>Run `npx hardhat ignition deploy ignition/modules/PrivateInfoStorage.ts --network kiichain` to deploy the contract</li>
@@ -42,7 +42,7 @@
 </ol>
 <br/>
 <p>😁 Interact with the dapp and create your exclusive Whitelist.</p>
-<p>⚠️ To add a new address in the Whitelist, it is necessary this one to be already connected with the KiiChain Testnet Network. Only addresses compatible with KiiChain are allowed</p>
+<p>⚠️ To add a new address wallet in the Whitelist, it is necessary this wallet to be already connected with the KiiChain Testnet Network. Only addresses compatible with KiiChain are allowed</p>
 <br/>
 <h3>Demo</h3>
 <a href="https://web3-whitelist-fz73.vercel.app/" target="_blank">🚗 Demo</a>
