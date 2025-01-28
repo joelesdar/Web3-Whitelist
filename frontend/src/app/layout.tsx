@@ -28,7 +28,7 @@ export default function RootLayout({
         className={`${montserrat.variable} antialiased min-h-screen`}
       >
         <Header />
-        <main className="flex-grow justify-center">{children}</main>
+        <main className="flex-grow justify-center py-8">{children}</main>
         <Footer />
       </body>
     </html>
