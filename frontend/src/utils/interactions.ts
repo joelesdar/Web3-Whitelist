@@ -33,7 +33,7 @@ export class PrivateInfoStorageContractClass implements PrivateInfoStorageContra
     this.wallet = new ethers.Wallet(privateKey, this.provider);
     this.signer = this.wallet.connect(this.provider);
     this.contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, this.signer);
-    // @ts-expect-error: Diferencia de tipos
+    // @ts-expect-error: `ethereum` no está definido en el tipo `Window`
     this.contract = this.contract.connect(this.signer);
   }
 
