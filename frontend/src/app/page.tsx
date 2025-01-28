@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input"
 export default function Home() {
   const { walletAddress } = useWallet();
   const [whitelist, setWhitelist] = useState<string[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [owner, setOwner] = useState<string | null>(null);
   const [isOwner, setIsOwner] = useState<boolean>(false);
   const [isWhitelisted, setIsWhitelisted] = useState<boolean>(false);
@@ -94,7 +95,8 @@ export default function Home() {
                         <form
                           onSubmit={(e) => {
                             e.preventDefault();
-                            const newAddress = (e.target as any).elements.address.value;
+                            const target = e.target as HTMLFormElement;
+                            const newAddress = (target.elements.namedItem("address") as HTMLInputElement).value;
                             addToWhitelist(newAddress);
                           }}
                         >
@@ -160,7 +162,8 @@ export default function Home() {
                     <form
                       onSubmit={(e) => {
                         e.preventDefault();
-                        const newInfo = (e.target as any).elements.privateInfo.value;
+                        const form = e.target as HTMLFormElement;
+                        const newInfo = (form.elements.namedItem("privateInfo") as HTMLInputElement).value;
                         updateKiiPrivateInfo(newInfo);
                       }}
                     >

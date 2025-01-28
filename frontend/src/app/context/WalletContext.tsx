@@ -17,6 +17,7 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
   const [balance, setBalance] = useState<string | null>(null);
 
   const switchToKiichainNetwork = async () => {
+    // @ts-expect-error: `ethereum` no está definido en el tipo `Window`
     if (typeof window.ethereum !== "undefined") {
       try {
         const kiichainNetwork = {
@@ -31,6 +32,7 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
           blockExplorerUrls: ["https://app.kiichain.io/"],
         };
 
+        // @ts-expect-error: `ethereum` no está definido en el tipo `Window`
         await window.ethereum.request({
           method: "wallet_addEthereumChain",
           params: [kiichainNetwork],
@@ -47,7 +49,9 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const isKiichainNetwork = async (): Promise<boolean> => {
+    // @ts-expect-error: `ethereum` no está definido en el tipo `Window`
     if (typeof window.ethereum !== "undefined") {
+      // @ts-expect-error: `ethereum` no está definido en el tipo `Window`
       const chainId = await window.ethereum.request({ method: "eth_chainId" });
       return chainId === "0x538"; // 1336 en hexadecimal
     }
@@ -55,12 +59,14 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const connectWallet = async () => {
+    // @ts-expect-error: `ethereum` no está definido en el tipo `Window`
     if (typeof window.ethereum !== "undefined") {
       try {
         if (!(await isKiichainNetwork())) {
           await switchToKiichainNetwork();
         }
-
+        
+        // @ts-expect-error: `ethereum` no está definido en el tipo `Window`
         const provider = new ethers.BrowserProvider(window.ethereum);
         const accounts = await provider.send("eth_requestAccounts", []);
         const account = accounts[0];
