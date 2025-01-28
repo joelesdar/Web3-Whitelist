@@ -1,3 +1,4 @@
+import { WalletProvider } from "@/app/context/WalletContext";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
@@ -22,14 +23,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
       <body
         className={`${montserrat.variable} antialiased min-h-screen`}
       >
-        <Header />
-        <main className="flex-grow justify-center py-8">{children}</main>
-        <Footer />
+        <WalletProvider>
+          <Header />
+          <main className="flex-grow justify-center py-8">{children}</main>
+          <Footer />
+        </WalletProvider>
       </body>
     </html>
   );

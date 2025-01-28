@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <footer className="border-t border-highlight">
       <div className="w-full max-w-screen-xl mx-auto pt-12 md:pt-20 justify-center">
