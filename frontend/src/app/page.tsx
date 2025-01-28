@@ -5,7 +5,7 @@ import Image from "next/image";
 import { PrivateInfoStorageContractClass } from "@/utils/interactions";
 import { useWallet } from "@/app/context/WalletContext";
 import { Button } from "@/components/ui/button";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Input } from "@/components/ui/input"
 
 
@@ -138,7 +138,6 @@ export default function Home() {
                   </AlertDescription>
                 </Alert>}
                 {error && <Alert className="text-white py-2 mt-4 bg-bgPrimary">
-                  <AlertTitle>Error</AlertTitle>
                   <AlertDescription>
                     {error}
                   </AlertDescription>
@@ -189,8 +188,9 @@ export default function Home() {
                 ) : (
                   <Fragment>
                     <div className="mt-4 p-4 bg-bgPrimary rounded-xl text-white">
-                      <h4 className="font-semibold text-lg mb-4">Private Information:</h4>
-                      <p>{kiiPrivateInfo || "Loading Private Information..."}</p>
+                      {/* <h4 className="font-semibold text-lg mb-4">Private Information:</h4>
+                      <p>{kiiPrivateInfo || "Loading Private Information..."}</p> */}
+                      <img className="mx-auto w-full rounded-lg" src="/KiiChain-banner.webp" alt="Wallet logo"/>
                     </div>
                   </Fragment>
                 )}
