@@ -10,9 +10,9 @@ contract PrivateInfoStorage {
     event WalletAdded(address indexed wallet);
     event PrivateInfoUpdated(string newInfo);
 
-    constructor() {
+    constructor(address _initialWallet) {
         owner = msg.sender;
-        addWalletToWhitelist(0x5Ec605060d810669fd7134494C4AF17ab438CC92);
+        addWalletToWhitelist(_initialWallet);
     }
 
     modifier onlyOwner() {

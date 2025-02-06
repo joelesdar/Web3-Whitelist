@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const CONTRACT_ADDRESS = `${process.env.WALLET_CONTRACT_ADDRESS}`;
+const CONTRACT_ADDRESS = "0xbaA432168A59E7D010BBAD0DC4D55eDD82832ff4";
 const CONTRACT_ABI = PrivateInfoStorage.abi;
 const privateKey = `0x${process.env.NEXT_PUBLIC_WALLET_API_KEY}`;
 
@@ -35,6 +35,7 @@ export class PrivateInfoStorageContractClass implements PrivateInfoStorageContra
     this.contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, this.signer);
     // @ts-expect-error: `ethereum` no está definido en el tipo `Window`
     this.contract = this.contract.connect(this.signer);
+    console.log(this.contract.getAddress());
   }
 
   getProvider = (): ethers.JsonRpcProvider => {
